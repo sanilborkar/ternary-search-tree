@@ -1,8 +1,10 @@
 package com.sanilborkar;
 
 
-/*
- * Implementation for a ternary search tree node
+/**
+ * Implementation for a ternary search tree (TST) node.
+ *
+ * @author sanilborkar
  */
 public class TernarySearchTreeNode {
 
@@ -16,42 +18,51 @@ public class TernarySearchTreeNode {
         return character;
     }
 
-    public boolean isEndOfWord() {
+    boolean isEndOfWord() {
         return isEndOfWord;
     }
 
-    public void setEndOfWord(final boolean endOfWord) {
+    void setEndOfWord(final boolean endOfWord) {
         isEndOfWord = endOfWord;
     }
 
-    public TernarySearchTreeNode getLeft() {
+    TernarySearchTreeNode getLeft() {
         return left;
     }
 
-    public void setLeft(final TernarySearchTreeNode left) {
+    void setLeft(final TernarySearchTreeNode left) {
         this.left = left;
     }
 
-    public TernarySearchTreeNode getCenter() {
+    TernarySearchTreeNode getCenter() {
         return center;
     }
 
-    public void setCenter(final TernarySearchTreeNode center) {
+    void setCenter(final TernarySearchTreeNode center) {
         this.center = center;
     }
 
-    public TernarySearchTreeNode getRight() {
+    TernarySearchTreeNode getRight() {
         return right;
     }
 
-    public void setRight(final TernarySearchTreeNode right) {
+    void setRight(final TernarySearchTreeNode right) {
         this.right = right;
     }
 
+    /**
+     * Constructs a TST node containing the character specified.
+     * @param character the character to be inserted into the TST node
+     */
     TernarySearchTreeNode(final Character character) {
         this(character, false);
     }
 
+    /**
+     * Constructs a TST node containing the character specified.
+     * @param character the character to be inserted into the TST node
+     * @param isEndOfWord indicates if this TST node is the end of the word that it represents
+     */
     TernarySearchTreeNode(final Character character, final boolean isEndOfWord) {
         this.character = character;
         this.isEndOfWord = isEndOfWord;

@@ -5,8 +5,10 @@ import com.google.common.base.Strings;
 import java.util.List;
 
 
-/*
- * Implementation for a ternary search tree node
+/**
+ * Implementation for a ternary search tree (TST).
+ *
+ * @author sanilborkar
  */
 public class TernarySearchTree {
 
@@ -20,32 +22,47 @@ public class TernarySearchTree {
         RIGHT
     }
 
+    /**
+     * Constructs an empty ternary search tree (TST).
+     */
     public TernarySearchTree() {
         this.root = null;
     }
 
+    /**
+     * Constructs and initializes a ternary search tree (TST) with the words specified.
+     * @param words list of words to initialize the tree with
+     */
     public TernarySearchTree(final List<String> words) {
         for (String word : words) {
             this.insert(word);
         }
     }
 
+    /**
+     * Returns the root of the TST.
+     * @return the root of the TST
+     */
     public TernarySearchTreeNode getRoot() {
         return root;
     }
 
-    public void setRoot(final TernarySearchTreeNode root) {
+    private void setRoot(final TernarySearchTreeNode root) {
         this.root = root;
     }
 
+    /**
+     * Checks if the TST is empty or not.
+     * @return true if the TST is empty, false otherwise.
+     */
     public boolean isEmpty() {
         return this.getRoot() == null;
     }
 
     /**
-     * Inserts data into the ternary search tree
-     * @param stringToInsert The String to insert
-     * @return The {@link TernarySearchTreeNode} pointing to the last character in stringToInsert
+     * Inserts data into the TST.
+     * @param stringToInsert the string to insert
+     * @return the {@link TernarySearchTreeNode} pointing to the last character in stringToInsert
      */
     public TernarySearchTreeNode insert(final String stringToInsert) {
 
@@ -128,8 +145,8 @@ public class TernarySearchTree {
     }
 
     /**
-     * Finds a word in the TST
-     * @param wordToLookup The word to search for
+     * Finds a word in the TST.
+     * @param wordToLookup the word to search for
      * @return true if wordToLookup exists, false otherwise
      */
     public boolean find(final String wordToLookup) {

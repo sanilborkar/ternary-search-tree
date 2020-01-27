@@ -19,14 +19,6 @@ class TernarySearchTreeTest {
     }
 
     @Test
-    void setRoot() {
-        TernarySearchTreeNode ternarySearchTreeNode = new TernarySearchTreeNode('S');
-        TernarySearchTree ternarySearchTree = new TernarySearchTree();
-        ternarySearchTree.setRoot(ternarySearchTreeNode);
-        assert ternarySearchTree.getRoot() == ternarySearchTreeNode;
-    }
-
-    @Test
     void isEmpty() {
         TernarySearchTree ternarySearchTree = new TernarySearchTree();
         assert ternarySearchTree.isEmpty();
