@@ -14,11 +14,19 @@ public class TernarySearchTreeNode {
     TernarySearchTreeNode center;
     TernarySearchTreeNode right;
 
+    /**
+     * Returns the character present at this TST node.
+     * @return the character at this TST node
+     */
     public Character getCharacter() {
         return character;
     }
 
-    boolean isEndOfWord() {
+    /**
+     * Checks if this TST node is the end of a word.
+     * @return true if this TST node is the end of a word, false otherwise.
+     */
+    public boolean isEndOfWord() {
         return isEndOfWord;
     }
 
@@ -26,7 +34,11 @@ public class TernarySearchTreeNode {
         isEndOfWord = endOfWord;
     }
 
-    TernarySearchTreeNode getLeft() {
+    /**
+     * Returns the left child of this TST node.
+     * @return the left child of this TST node
+     */
+    public TernarySearchTreeNode getLeft() {
         return left;
     }
 
@@ -34,7 +46,11 @@ public class TernarySearchTreeNode {
         this.left = left;
     }
 
-    TernarySearchTreeNode getCenter() {
+    /**
+     * Returns the center/middle child of this TST node.
+     * @return the center/middle child of this TST node
+     */
+    public TernarySearchTreeNode getCenter() {
         return center;
     }
 
@@ -42,7 +58,11 @@ public class TernarySearchTreeNode {
         this.center = center;
     }
 
-    TernarySearchTreeNode getRight() {
+    /**
+     * Returns the right child of this TST node.
+     * @return the right child of this TST node
+     */
+    public TernarySearchTreeNode getRight() {
         return right;
     }
 

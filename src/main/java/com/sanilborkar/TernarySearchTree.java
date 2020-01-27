@@ -181,7 +181,7 @@ public class TernarySearchTree {
     /**
      * Searches for a word in the TST.
      * @param wordToSearch the word to search for
-     * @return true if wordToLookup exists, false otherwise
+     * @return true if wordToSearch exists, false otherwise
      */
     public boolean search(final String wordToSearch) {
         return search(getRoot(), wordToSearch.toUpperCase().toCharArray(), 0);
