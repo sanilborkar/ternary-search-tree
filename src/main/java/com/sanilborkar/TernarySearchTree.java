@@ -20,11 +20,11 @@ public class TernarySearchTree {
         RIGHT
     }
 
-    TernarySearchTree() {
+    public TernarySearchTree() {
         this.root = null;
     }
 
-    TernarySearchTree(final List<String> words) {
+    public TernarySearchTree(final List<String> words) {
         for (String word : words) {
             this.insert(word);
         }
