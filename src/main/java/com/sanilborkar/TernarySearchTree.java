@@ -69,7 +69,7 @@ public class TernarySearchTree {
         return getRoot();
     }
 
-    private TernarySearchTreeNode insert(TernarySearchTreeNode node, char[] word, int index) {
+    private TernarySearchTreeNode insert(TernarySearchTreeNode node, final char[] word, final int index) {
 
         final char currentChar = word[index];
 
@@ -180,10 +180,39 @@ public class TernarySearchTree {
 
     /**
      * Searches for a word in the TST.
+     * @param wordToSearch the word to search for
+     * @return true if wordToLookup exists, false otherwise
+     */
+    public boolean search(final String wordToSearch) {
+        return search(getRoot(), wordToSearch.toUpperCase().toCharArray(), 0);
+    }
+
+    private boolean search(final TernarySearchTreeNode node, final char[] word, final int index) {
+
+        if (node == null) {
+            return false;
+        }
+
+        final char currentChar = word[index];
+        if (currentChar < node.getCharacter()) {
+            return search(node.getLeft(), word, index);
+        } else if (currentChar > node.getCharacter()) {
+            return search(node.getRight(), word, index);
+        } else {
+            if (index == word.length - 1) {
+                return node.isEndOfWord();
+            }
+
+            return search(node.getCenter(), word, index+1);
+        }
+    }
+
+    /**
+     * Searches for a word in the TST.
      * @param wordToLookup the word to search for
      * @return true if wordToLookup exists, false otherwise
      */
-    public boolean search(final String wordToLookup) {
+    private boolean searchIter(final String wordToLookup) {
 
         // If tree is empty or the word is null/empty, return false
         if (this.isEmpty() || Strings.isNullOrEmpty(wordToLookup)) {
@@ -221,5 +250,35 @@ public class TernarySearchTree {
         }
 
         return false;
+    }
+
+    /**
+     * Deletes a string from the TST.
+     * @param stringToDelete the string to delete from the TST
+     * @return true if word was deleted, false if word was not present in the TST
+     */
+    public boolean delete(final String stringToDelete) {
+        return delete(getRoot(), stringToDelete.toUpperCase().toCharArray(), 0);
+    }
+
+    private boolean delete(final TernarySearchTreeNode node, final char[] word, final int index) {
+
+        if (node == null) {
+            return false;
+        }
+
+        final char currentChar = word[index];
+        if (currentChar < node.getCharacter()) {
+            return delete(node.getLeft(), word, index);
+        } else if (currentChar > node.getCharacter()) {
+            return delete(node.getRight(), word, index);
+        } else {
+            if (index == word.length - 1 && node.isEndOfWord()) {
+                node.setEndOfWord(false);
+                return true;
+            }
+
+            return delete(node.getCenter(), word, index + 1);
+        }
     }
 }

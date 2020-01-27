@@ -93,4 +93,28 @@ class TernarySearchTreeTest {
         assert ternarySearchTree.search("aPPle");
         assert ternarySearchTree.search("air");
     }
+
+    @Test
+    void delete() {
+        TernarySearchTree ternarySearchTree = new TernarySearchTree();
+
+        // Delete from an empty TST
+        assert !ternarySearchTree.delete("Airport");
+
+        // Insert into TST
+        ternarySearchTree.insert("mandolin");
+        ternarySearchTree.insert("GuiTar");
+        ternarySearchTree.insert("PIANO");
+        ternarySearchTree.insert("FlutE");
+        ternarySearchTree.insert("Drums");
+        ternarySearchTree.insert("bongos");
+
+        assert ternarySearchTree.delete("bongos");
+        assert !ternarySearchTree.delete("bongos");
+
+        assert !ternarySearchTree.delete("cello");
+
+        assert ternarySearchTree.delete("MANDOLIN");
+        assert ternarySearchTree.delete("piAno");
+    }
 }
