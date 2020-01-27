@@ -10,9 +10,9 @@ public class TernarySearchTreeNode {
 
     private Character character;
     private boolean isEndOfWord;
-    private TernarySearchTreeNode left;
-    private TernarySearchTreeNode center;
-    private TernarySearchTreeNode right;
+    TernarySearchTreeNode left;
+    TernarySearchTreeNode center;
+    TernarySearchTreeNode right;
 
     public Character getCharacter() {
         return character;

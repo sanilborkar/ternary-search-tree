@@ -60,11 +60,45 @@ public class TernarySearchTree {
     }
 
     /**
+     * Inserts a string into the TST.
+     * @param stringToInsert the string to insert
+     * @return the root of the TST after the insert
+     */
+    public TernarySearchTreeNode insert(final String stringToInsert) {
+        root = insert(this.root, stringToInsert.toUpperCase().toCharArray(), 0);
+        return getRoot();
+    }
+
+    private TernarySearchTreeNode insert(TernarySearchTreeNode node, char[] word, int index) {
+
+        final char currentChar = word[index];
+
+        if (node == null) {
+            node = new TernarySearchTreeNode(currentChar);
+        }
+
+        if (currentChar < node.getCharacter()) {
+            node.left = insert(node.getLeft(), word, index);
+        } else if (currentChar > node.getCharacter()) {
+            node.right = insert(node.getRight(), word, index);
+        } else {
+
+            if (index + 1 < word.length) {
+                node.center = insert(node.getCenter(), word, index + 1);
+            } else {
+                node.setEndOfWord(true);
+            }
+        }
+
+        return node;
+    }
+
+    /**
      * Inserts data into the TST.
      * @param stringToInsert the string to insert
      * @return the {@link TernarySearchTreeNode} pointing to the last character in stringToInsert
      */
-    public TernarySearchTreeNode insert(final String stringToInsert) {
+    private TernarySearchTreeNode insertIter(final String stringToInsert) {
 
         // Store all characters in lowercase
         final String data = stringToInsert.toLowerCase();
@@ -145,19 +179,19 @@ public class TernarySearchTree {
     }
 
     /**
-     * Finds a word in the TST.
+     * Searches for a word in the TST.
      * @param wordToLookup the word to search for
      * @return true if wordToLookup exists, false otherwise
      */
-    public boolean find(final String wordToLookup) {
+    public boolean search(final String wordToLookup) {
 
         // If tree is empty or the word is null/empty, return false
         if (this.isEmpty() || Strings.isNullOrEmpty(wordToLookup)) {
             return false;
         }
 
-        // Convert the search keyword to lowercase as the TST is maintained in lower case
-        final String searchWord = wordToLookup.toLowerCase();
+        // Convert the search keyword to uppercase the TST is maintained in upper case
+        final String searchWord = wordToLookup.toUpperCase();
 
         TernarySearchTreeNode currentNode = this.getRoot();
         for (int i = 0; i < searchWord.length() && currentNode != null; i++) {

@@ -12,7 +12,7 @@ class TernarySearchTreeTest {
     void getRoot() {
         ArrayList<String> words = new ArrayList<>(Arrays.asList("Hello"));
         TernarySearchTree ternarySearchTree = new TernarySearchTree(words);
-        assert ternarySearchTree.getRoot().getCharacter() == words.get(0).toLowerCase().charAt(0);
+        assert ternarySearchTree.getRoot().getCharacter() == words.get(0).toUpperCase().charAt(0);
 
         ternarySearchTree = new TernarySearchTree();
         assert ternarySearchTree.getRoot() == null;
@@ -32,20 +32,30 @@ class TernarySearchTreeTest {
     void insert() {
         TernarySearchTree ternarySearchTree = new TernarySearchTree();
 
+        String firstWordToInsert = "ball";
+        char expectedRootChar = firstWordToInsert.toUpperCase().charAt(0);
+
         // Insert into empty tree
-        assert ternarySearchTree.insert("Ball") != null;
+        assert ternarySearchTree.insert(firstWordToInsert) != null;
+        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
 
         assert ternarySearchTree.insert("BAT") != null;
+        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
 
         assert ternarySearchTree.insert("battery") != null;
+        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
 
         assert ternarySearchTree.insert("airport") != null;
+        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
 
         assert ternarySearchTree.insert("BaLLet") != null;
+        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
 
         assert ternarySearchTree.insert("bALLs") != null;
+        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
 
         assert ternarySearchTree.insert("air") != null;
+        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
     }
 
     /**
@@ -53,16 +63,16 @@ class TernarySearchTreeTest {
      * at https://www.cs.usfca.edu/~galles/visualization/TST.html
      */
     @Test
-    void find() {
+    void search() {
         TernarySearchTree ternarySearchTree = new TernarySearchTree();
 
         // Search in an empty TST
-        assert !ternarySearchTree.find("Airport");
+        assert !ternarySearchTree.search("Airport");
 
         ternarySearchTree.insert("Bell");
 
         // Search for a word that contains a word in the TST as its prefix
-        assert !ternarySearchTree.find("belittle");
+        assert !ternarySearchTree.search("belittle");
 
         // Insert into TST
         ternarySearchTree.insert("Stargazing");
@@ -74,13 +84,13 @@ class TernarySearchTreeTest {
         ternarySearchTree.insert("air");
 
         // Search for a word present in the TST
-        assert ternarySearchTree.find("bEll");
+        assert ternarySearchTree.search("bEll");
 
         // Search for a word that is the prefix of a word in the TST
-        assert !ternarySearchTree.find("star");
+        assert !ternarySearchTree.search("star");
 
         // Search for a word present in the TST
-        assert ternarySearchTree.find("aPPle");
-        assert ternarySearchTree.find("air");
+        assert ternarySearchTree.search("aPPle");
+        assert ternarySearchTree.search("air");
     }
 }
