@@ -2,21 +2,65 @@
 
 ## Overview
 
-## Creating a JAR Using Gradle in IntelliJ
-After any changes to the project, please clean and rebuild the JAR by following the steps given below:
-1. Go to **View > Tool Windows > Gradle**.
-2. In the Gradle window that opens, expand **Tasks > build**.
-3. Double-click on the **clean** option to clean the current build artifacts.
-3. Once the "clean" process is done, double-click on the **build** option to start the build process.
-4. Once the "build" process is done, the JAR file will be generated and placed under **builds/libs**.
+A ternary search tree (TST) is a special trie data structure where the child nodes of a standard trie are ordered as a binary search tree.
 
-## Importing JAR in Your Project
+Reference : [GeeksForGeeks](https://www.geeksforgeeks.org/ternary-search-tree/)
 
-### IntelliJ
-1. Open **File > Project Structure > Project Settings > Modules**.
-2. In the right pane, select the "**Dependencies**" tab.
-3. Click on the "**+**" and select "**JARs or directories**".
-4. Select "**ternary-search-jar-1.0.jar**" in the pop-up dialog box.
-5. Click "Apply".
-6. Click "OK".
-7. You will see the added JAR under your "**PROJ_DIRECTORY/libs**" folder.
+You can learn more about TST on [Wikipedia](https://en.wikipedia.org/wiki/Ternary_search_tree) and [GeeksForGeeks](https://www.geeksforgeeks.org/ternary-search-tree/).
+
+## Usage
+
+Some common usages are given below.
+
+### Constructor
+
+The default constructor initializes an empty TST.
+
+```java
+TernarySearchTree ternarySearchTree = new TernarySearchTree();
+```
+
+You can even initialize it with a list of words like a dictionary.
+
+```java
+ArrayList<String> words = new ArrayList<>();
+words.add("hellow", "World", "very", "good", "evening");
+TernarySearchTree ternarySearchTree = new TernarySearchTree(words);
+```
+
+### Insert
+
+You can insert a word into an initialized TST using the following code:
+
+```java
+String wordToInsert = "Bienvenue";
+TernarySearchTreeNode root = ternarySearchTree.insert(wordToInsert);
+```
+
+A successful insert returns the root of the resulting TST.
+
+### Search
+
+You can search for a word using the *search* method which returns a *true* if the specified word is present in the TST, *false* otherwise.
+
+```java
+boolean found = ternarySearchTree.search("Airport");
+```
+
+### Delete
+
+You can delete a word from the TST using *delete*.
+
+```java
+boolean success = ternarySearchTree.delete("Airport");
+```
+
+If the word was present in the TST, *delete* returns a *true* else it returns a *false*.
+
+## Author
+
+[Sanil Sinai Borkar](https://github.com/sanilborkar) with :blue_heart:
+
+## License
+
+*ternary-search-tree* is licensed under [MIT license](https://github.com/sanilborkar/ternary-search-tree/blob/master/LICENSE).

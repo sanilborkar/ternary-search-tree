@@ -26,7 +26,7 @@ public class TernarySearchTreeNode {
      * Checks if this TST node is the end of a word.
      * @return true if this TST node is the end of a word, false otherwise.
      */
-    public boolean isEndOfWord() {
+    boolean isEndOfWord() {
         return isEndOfWord;
     }
 
@@ -38,7 +38,7 @@ public class TernarySearchTreeNode {
      * Returns the left child of this TST node.
      * @return the left child of this TST node
      */
-    public TernarySearchTreeNode getLeft() {
+    TernarySearchTreeNode getLeft() {
         return left;
     }
 
@@ -46,7 +46,7 @@ public class TernarySearchTreeNode {
      * Returns the center/middle child of this TST node.
      * @return the center/middle child of this TST node
      */
-    public TernarySearchTreeNode getCenter() {
+    TernarySearchTreeNode getCenter() {
         return center;
     }
 
@@ -54,7 +54,7 @@ public class TernarySearchTreeNode {
      * Returns the right child of this TST node.
      * @return the right child of this TST node
      */
-    public TernarySearchTreeNode getRight() {
+    TernarySearchTreeNode getRight() {
         return right;
     }
 
