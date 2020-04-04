@@ -42,10 +42,6 @@ public class TernarySearchTreeNode {
         return left;
     }
 
-    void setLeft(final TernarySearchTreeNode left) {
-        this.left = left;
-    }
-
     /**
      * Returns the center/middle child of this TST node.
      * @return the center/middle child of this TST node
@@ -54,20 +50,12 @@ public class TernarySearchTreeNode {
         return center;
     }
 
-    void setCenter(final TernarySearchTreeNode center) {
-        this.center = center;
-    }
-
     /**
      * Returns the right child of this TST node.
      * @return the right child of this TST node
      */
     public TernarySearchTreeNode getRight() {
         return right;
-    }
-
-    void setRight(final TernarySearchTreeNode right) {
-        this.right = right;
     }
 
     /**
@@ -89,5 +77,9 @@ public class TernarySearchTreeNode {
         this.left = null;
         this.center = null;
         this.right = null;
+    }
+
+    boolean isLeafNode() {
+        return this.left == null && this.center == null && this.right == null;
     }
 }

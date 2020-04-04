@@ -108,13 +108,26 @@ class TernarySearchTreeTest {
         ternarySearchTree.insert("FlutE");
         ternarySearchTree.insert("Drums");
         ternarySearchTree.insert("bongos");
+        ternarySearchTree.insert("guitarist");
+        ternarySearchTree.insert("pianobar");
+
+        assert ternarySearchTree.delete("guitarist");
+        assert !ternarySearchTree.delete("guitarist");
+        assert ternarySearchTree.delete("guitar");
 
         assert ternarySearchTree.delete("bongos");
+        assert !ternarySearchTree.search("bongos");
+
         assert !ternarySearchTree.delete("bongos");
 
         assert !ternarySearchTree.delete("cello");
+        assert !ternarySearchTree.search("cello");
 
         assert ternarySearchTree.delete("MANDOLIN");
+        assert !ternarySearchTree.search("MANDOLIN");
+
         assert ternarySearchTree.delete("piAno");
+        assert !ternarySearchTree.search("piAno");
+        assert ternarySearchTree.search("PIANObar");
     }
 }
