@@ -3,6 +3,8 @@ package com.sanilborkar;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.common.base.Strings;
+
 
 /**
  * Implementation for a ternary search tree (TST).
@@ -66,10 +68,19 @@ public class TernarySearchTree {
 
     /**
      * Inserts a string into the TST.
+     * 
+     * <p>
+     * The {@code stringToInsert} cannot be {@code null} or empty.
+     * No insert will happen in this case and a null value would be returned.
+     * </p>
      * @param stringToInsert the string to insert
      * @return the root of the TST after the insert
      */
     public TernarySearchTreeNode insert(final String stringToInsert) {
+        if (Strings.isNullOrEmpty(stringToInsert)) {
+            return null;
+        }
+
         root = insert(this.root, stringToInsert.toUpperCase().toCharArray(), 0);
         return getRoot();
     }
@@ -100,10 +111,19 @@ public class TernarySearchTree {
 
     /**
      * Searches for a word in the TST.
+     * 
+     * <p>
+     * The {@code wordToSearch} would return {@code false} as we cannot
+     * insert {@code null} or empty strings into the TST.
+     * </p>
      * @param wordToSearch the word to search for
      * @return true if wordToSearch exists, false otherwise
      */
     public boolean search(final String wordToSearch) {
+        if (Strings.isNullOrEmpty(wordToSearch)) {
+            return false;
+        }
+
         return search(getRoot(), wordToSearch.toUpperCase().toCharArray(), 0);
     }
 
@@ -129,10 +149,18 @@ public class TernarySearchTree {
 
     /**
      * Deletes a string from the TST.
+     * 
+     * <p>
+     * The {@code stringToDelete} would return {@code false} as we cannot
+     * insert {@code null} or empty strings into the TST.
+     * </p>
      * @param stringToDelete the string to delete from the TST
      * @return true if word was deleted, false if word was not present in the TST
      */
     public boolean delete(final String stringToDelete) {
+        if (Strings.isNullOrEmpty(stringToDelete)) {
+            return false;
+        }
 
         ArrayList<NodeDirection> directions = new ArrayList<>();
 

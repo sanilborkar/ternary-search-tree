@@ -2,6 +2,9 @@ package com.sanilborkar;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -31,6 +34,10 @@ class TernarySearchTreeTest {
     @Test
     void insert() {
         TernarySearchTree ternarySearchTree = new TernarySearchTree();
+
+        // Check null and empty strings
+        assertNull(ternarySearchTree.insert(null));
+        assertNull(ternarySearchTree.insert(""));
 
         String firstWordToInsert = "ball";
         char expectedRootChar = firstWordToInsert.toUpperCase().charAt(0);
@@ -92,6 +99,10 @@ class TernarySearchTreeTest {
         // Search for a word present in the TST
         assert ternarySearchTree.search("aPPle");
         assert ternarySearchTree.search("air");
+
+        // Check null and empty strings
+        assertFalse(ternarySearchTree.search(null));
+        assertFalse(ternarySearchTree.search(""));
     }
 
     @Test
@@ -129,5 +140,9 @@ class TernarySearchTreeTest {
         assert ternarySearchTree.delete("piAno");
         assert !ternarySearchTree.search("piAno");
         assert ternarySearchTree.search("PIANObar");
+
+        // Check null and empty strings
+        assertFalse(ternarySearchTree.delete(null));
+        assertFalse(ternarySearchTree.delete(""));
     }
 }
