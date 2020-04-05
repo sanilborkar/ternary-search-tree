@@ -2,8 +2,11 @@ package com.sanilborkar;
 
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,22 +18,21 @@ class TernarySearchTreeTest {
     void getRoot() {
         ArrayList<String> words = new ArrayList<>(Arrays.asList("Hello"));
         TernarySearchTree ternarySearchTree = new TernarySearchTree(words);
-        assert ternarySearchTree.getRoot().getCharacter() == words.get(0).toUpperCase().charAt(0);
+        assertEquals(words.get(0).toUpperCase().charAt(0), ternarySearchTree.getRoot().getCharacter(), "TST root does not match");
 
         ternarySearchTree = new TernarySearchTree();
-        assert ternarySearchTree.getRoot() == null;
+        assertNull(ternarySearchTree.getRoot());
     }
 
     @Test
     void isEmpty() {
         TernarySearchTree ternarySearchTree = new TernarySearchTree();
-        assert ternarySearchTree.isEmpty();
+        assertTrue(ternarySearchTree.isEmpty());
+
+        ternarySearchTree.insert("WORLD");
+        assertFalse(ternarySearchTree.isEmpty());
     }
 
-    /**
-     * The insertion can be verified using a visual representation of the TST
-     * at https://www.cs.usfca.edu/~galles/visualization/TST.html
-     */
     @Test
     void insert() {
         TernarySearchTree ternarySearchTree = new TernarySearchTree();
@@ -43,43 +45,39 @@ class TernarySearchTreeTest {
         char expectedRootChar = firstWordToInsert.toUpperCase().charAt(0);
 
         // Insert into empty tree
-        assert ternarySearchTree.insert(firstWordToInsert) != null;
-        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
+        assertNotNull(ternarySearchTree.insert(firstWordToInsert));
+        assertEquals(expectedRootChar, ternarySearchTree.getRoot().getCharacter(), "insert failed");
 
-        assert ternarySearchTree.insert("BAT") != null;
-        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
+        assertNotNull(ternarySearchTree.insert("BAT"));
+        assertEquals(expectedRootChar, ternarySearchTree.getRoot().getCharacter(), "insert failed");
 
-        assert ternarySearchTree.insert("battery") != null;
-        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
+        assertNotNull(ternarySearchTree.insert("battery"));
+        assertEquals(expectedRootChar, ternarySearchTree.getRoot().getCharacter(), "insert failed");
 
-        assert ternarySearchTree.insert("airport") != null;
-        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
+        assertNotNull(ternarySearchTree.insert("airport"));
+        assertEquals(expectedRootChar, ternarySearchTree.getRoot().getCharacter(), "insert failed");
 
-        assert ternarySearchTree.insert("BaLLet") != null;
-        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
+        assertNotNull(ternarySearchTree.insert("BaLLet"));
+        assertEquals(expectedRootChar, ternarySearchTree.getRoot().getCharacter(), "insert failed");
 
-        assert ternarySearchTree.insert("bALLs") != null;
-        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
+        assertNotNull(ternarySearchTree.insert("bALLs"));
+        assertEquals(expectedRootChar, ternarySearchTree.getRoot().getCharacter(), "insert failed");
 
-        assert ternarySearchTree.insert("air") != null;
-        assert ternarySearchTree.getRoot().getCharacter() == expectedRootChar;
+        assertNotNull(ternarySearchTree.insert("air"));
+        assertEquals(expectedRootChar, ternarySearchTree.getRoot().getCharacter(), "insert failed");
     }
 
-    /**
-     * The insertion can be verified using a visual representation of the TST
-     * at https://www.cs.usfca.edu/~galles/visualization/TST.html
-     */
     @Test
     void search() {
         TernarySearchTree ternarySearchTree = new TernarySearchTree();
 
         // Search in an empty TST
-        assert !ternarySearchTree.search("Airport");
+        assertFalse(ternarySearchTree.search("Airport"));
 
         ternarySearchTree.insert("Bell");
 
         // Search for a word that contains a word in the TST as its prefix
-        assert !ternarySearchTree.search("belittle");
+        assertFalse(ternarySearchTree.search("belittle"));
 
         // Insert into TST
         ternarySearchTree.insert("Stargazing");
@@ -91,14 +89,14 @@ class TernarySearchTreeTest {
         ternarySearchTree.insert("air");
 
         // Search for a word present in the TST
-        assert ternarySearchTree.search("bEll");
+        assertTrue(ternarySearchTree.search("bEll"));
 
         // Search for a word that is the prefix of a word in the TST
-        assert !ternarySearchTree.search("star");
+        assertFalse(ternarySearchTree.search("star"));
 
         // Search for a word present in the TST
-        assert ternarySearchTree.search("aPPle");
-        assert ternarySearchTree.search("air");
+        assertTrue(ternarySearchTree.search("aPPle"));
+        assertTrue(ternarySearchTree.search("air"));
 
         // Check null and empty strings
         assertFalse(ternarySearchTree.search(null));
@@ -110,7 +108,7 @@ class TernarySearchTreeTest {
         TernarySearchTree ternarySearchTree = new TernarySearchTree();
 
         // Delete from an empty TST
-        assert !ternarySearchTree.delete("Airport");
+        assertFalse(ternarySearchTree.delete("Airport"));
 
         // Insert into TST
         ternarySearchTree.insert("mandolin");
@@ -122,24 +120,24 @@ class TernarySearchTreeTest {
         ternarySearchTree.insert("guitarist");
         ternarySearchTree.insert("pianobar");
 
-        assert ternarySearchTree.delete("guitarist");
-        assert !ternarySearchTree.delete("guitarist");
-        assert ternarySearchTree.delete("guitar");
+        assertTrue(ternarySearchTree.delete("guitarist"));
+        assertFalse(ternarySearchTree.delete("guitarist"));
+        assertTrue(ternarySearchTree.delete("guitar"));
 
-        assert ternarySearchTree.delete("bongos");
-        assert !ternarySearchTree.search("bongos");
+        assertTrue(ternarySearchTree.delete("bongos"));
+        assertFalse(ternarySearchTree.search("bongos"));
 
-        assert !ternarySearchTree.delete("bongos");
+        assertFalse(ternarySearchTree.delete("bongos"));
 
-        assert !ternarySearchTree.delete("cello");
-        assert !ternarySearchTree.search("cello");
+        assertFalse(ternarySearchTree.delete("cello"));
+        assertFalse(ternarySearchTree.search("cello"));
 
-        assert ternarySearchTree.delete("MANDOLIN");
-        assert !ternarySearchTree.search("MANDOLIN");
+        assertTrue(ternarySearchTree.delete("MANDOLIN"));
+        assertFalse(ternarySearchTree.search("MANDOLIN"));
 
-        assert ternarySearchTree.delete("piAno");
-        assert !ternarySearchTree.search("piAno");
-        assert ternarySearchTree.search("PIANObar");
+        assertTrue(ternarySearchTree.delete("piAno"));
+        assertFalse(ternarySearchTree.search("piAno"));
+        assertTrue(ternarySearchTree.search("PIANObar"));
 
         // Check null and empty strings
         assertFalse(ternarySearchTree.delete(null));
