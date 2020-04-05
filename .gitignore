@@ -145,3 +145,10 @@ build.gradle
 gradlew
 gradlew.bat
 settings.gradle
+
+# VSCode
+.classpath
+.project
+.settings/
+.vscode/
+target/
