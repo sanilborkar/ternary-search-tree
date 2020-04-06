@@ -1,4 +1,4 @@
-package com.sanilborkar;
+package io.github.sanilborkar;
 
 
 /**

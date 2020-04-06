@@ -1,4 +1,4 @@
-package com.sanilborkar;
+package io.github.sanilborkar;
 
 import java.util.ArrayList;
 import java.util.List;
