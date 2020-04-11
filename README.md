@@ -8,6 +8,20 @@ Reference : [GeeksForGeeks](https://www.geeksforgeeks.org/ternary-search-tree/)
 
 You can learn more about TST on [Wikipedia](https://en.wikipedia.org/wiki/Ternary_search_tree) and [GeeksForGeeks](https://www.geeksforgeeks.org/ternary-search-tree/).
 
+## Adding As Dependency
+
+You can include this package into your project via Maven
+
+```xml
+<dependency>
+  <groupId>io.github.sanilborkar</groupId>
+  <artifactId>ternary-search-tree</artifactId>
+  <version>1.0</version>
+</dependency>
+```
+
+For inclusion using other build tools, please refer to [this page](https://search.maven.org/artifact/io.github.sanilborkar/ternary-search-tree/1.0/jar).
+
 ## Usage
 
 **Currently, only strings can be inserted into the TST.**
